@@ -1,14 +1,11 @@
 import React from 'react'
 
-const Categories = ({ items, onClick }) =>  {
-	// console.log("items", items);
-	// const [state, setstate] = useState(initialState)
+const Categories = React.memo(function Categories({ items, onClick }) {
 	const [activeItem, setActiveItem] = React.useState(null)
-	const [count, setCount] = React.useState(null)
 
 	const onSelectItem = (index) => {
-		// setstate(index)
 		setActiveItem(index)
+		onClick(index)
 	}
 
 	return (
@@ -18,19 +15,19 @@ const Categories = ({ items, onClick }) =>  {
 					onClick={() => onSelectItem(null)}>
 					Все
 				</li>
-				{	
+				{
 					items &&
-						items.map((el, index) => (
-							<li className={activeItem === index ? 'active' : ''}
-								onClick={() => onSelectItem(index)}
-								key={`${el}_${index}`}>
-								{el}
-							</li>
-						))
+					items.map((el, index) => (
+						<li className={activeItem === index ? 'active' : ''}
+							onClick={() => onSelectItem(index)}
+							key={`${el}_${index}`}>
+							{el}
+						</li>
+					))
 				}
 			</ul>
 		</div>
 	)
-}
+})
 
 export default Categories

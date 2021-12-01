@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SortPopup({items}) {
+const SortPopup = React.memo(function SortPopup({ items }) {
 	const [visiblePopup, setVisiblePopup] = React.useState(false)
 	const [activeItem, setActiveItem] = React.useState(0)
 	const sortRef = React.useRef()
@@ -44,24 +44,24 @@ function SortPopup({items}) {
 				<span onClick={togleVisiblePopup}>{activeLabel}</span>
 			</div>
 			{
-				visiblePopup && 
-					<div className="sort__popup">
-						<ul>
-							{
-								items &&
-								items.map((el, index) => (
-									<li className={activeItem === index ? 'active' : ''}
-										onClick={() => onSelectItem(index)}
-										key={`${el.type}_${index}`}>
-										{el.name}
-									</li>
-								))
-							}
-						</ul>
-					</div>
+				visiblePopup &&
+				<div className="sort__popup">
+					<ul>
+						{
+							items &&
+							items.map((el, index) => (
+								<li className={activeItem === index ? 'active' : ''}
+									onClick={() => onSelectItem(index)}
+									key={`${el.type}_${index}`}>
+									{el.name}
+								</li>
+							))
+						}
+					</ul>
+				</div>
 			}
 		</div>
 	)
-}
+})
 
 export default SortPopup
