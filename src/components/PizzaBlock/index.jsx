@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import LoadingBlock from './LoadingBlock'
+
 function PizzaBlock({ name, imageUrl, price, types, sizes }) {
 	const availableNames = ['тонкое', 'традиционное']
 	const availableSize = [26, 30, 40]
@@ -87,7 +89,7 @@ PizzaBlock.propTypes = {
 	imageUrl: PropTypes.string.isRequired,
 	price: PropTypes.number.isRequired,
 	types: PropTypes.arrayOf(PropTypes.number).isRequired,
-	sizes: PropTypes.arrayOf(PropTypes.number).isRequired
+	sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
 }
 
 PizzaBlock.default = {
@@ -95,7 +97,7 @@ PizzaBlock.default = {
 	imageUrl: "",
 	price: 0,
 	types: [],
-	sizes: []
+	sizes: [],
 }
 
 export default PizzaBlock
