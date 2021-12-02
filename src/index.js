@@ -10,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 
 
 store.subscribe(() => {
-  console.log("change", store.getState());
+  // console.log("change", store.getState());
 })
 
 ReactDOM.render(
