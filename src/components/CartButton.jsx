@@ -6,7 +6,7 @@ const CartButton = ({ onClick, className, outline, children }) => {
 	return (
 		<button 
 			onClick={onClick}
-			className={classNames('button', className, {'button--outline': outline,})}
+			className={classNames('button', className, {'button--outline': outline})}
 		>
 			{children}
 		</button>

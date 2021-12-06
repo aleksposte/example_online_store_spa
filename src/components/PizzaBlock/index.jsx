@@ -3,20 +3,33 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import LoadingBlock from './LoadingBlock'
+import CartButton from '../CartButton'
 
-function PizzaBlock({ name, imageUrl, price, types, sizes }) {
+function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, addedCount }) {
 	const availableNames = ['тонкое', 'традиционное']
 	const availableSize = [26, 30, 40]
 
-	const [activeType, setsActiveType] = React.useState(types[0])
-	const [activeSize, setsActiveSize] = React.useState(sizes[0])
+	const [activeType, setActiveType] = React.useState(types[0])
+	const [activeSize, setActiveSize] = React.useState(sizes[0])
 
 	const onSelectType = (index) => {
-		setsActiveType(index)
+		setActiveType(index)
 	}
 
 	const onSelectSize = (size) => {
-		setsActiveSize(size)
+		setActiveSize(size)
+	}
+
+	const onAddPizza = () => {
+		const obj = {
+			id, 
+			name, 
+			imageUrl, 
+			price, 
+			type: availableNames[activeType],
+			size: activeSize,
+		}
+		onClickAddPizza(obj)
 	}
 
 	return (
@@ -63,7 +76,8 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
 			</div>
 			<div className="pizza-block__bottom">
 				<div className="pizza-block__price">от {price} ₽</div>
-				<div className="button button--outline button--add">
+				{/* <div className="button button--outline button--add"> */}
+				<CartButton className=" button--add" onClick={onAddPizza} outline>
 					<svg
 						width="12"
 						height="12"
@@ -77,27 +91,34 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
 						/>
 					</svg>
 					<span>Добавить</span>
-					<i>2</i>
-				</div>
+					{addedCount && <i>{addedCount}</i>}
+				</CartButton>
+					
+				{/* </div> */}
 			</div>
 		</div>
 	)
 }
 
 PizzaBlock.propTypes = {
+	id: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
 	imageUrl: PropTypes.string.isRequired,
 	price: PropTypes.number.isRequired,
 	types: PropTypes.arrayOf(PropTypes.number).isRequired,
 	sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+	onClickAddPizza: PropTypes.func,
+	addedCount: PropTypes.number,
 }
 
 PizzaBlock.default = {
+	id: 0,
 	name: "",
 	imageUrl: "",
 	price: 0,
 	types: [],
 	sizes: [],
+	addedCount: 0,
 }
 
 export default PizzaBlock
