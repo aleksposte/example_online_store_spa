@@ -1,13 +1,8 @@
 import React from 'react'
-import axios from 'axios'
-// import { connect } from 'react-redux'
-import { useDispatch } from 'react-redux'
 import { Routes, Route } from 'react-router-dom'
 
 import { Header } from './components'
 import { Home , Cart } from './pages'
-
-
 
 function App() {
 	return (
@@ -23,7 +18,7 @@ function App() {
 	)
 }
 
-
+export default App
 
 // class App extends React.Component {
 // 	componentDidMount() {
@@ -31,9 +26,6 @@ function App() {
 // 			this.props.setPizzas(data.pizzas)
 // 		})
 // 	}
-	
-	
-
 // 	render() {
 // 		console.log(this.props);
 
@@ -62,5 +54,3 @@ function App() {
 // }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-export default App
