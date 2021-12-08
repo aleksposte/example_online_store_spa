@@ -6,13 +6,13 @@
 - Добавление в корзину, взаимодействие с товаром в корзине (изменение количества, удаление).
 
 ###### Стек:
-ReactJS
-React hooks
-React Router
-Redux
-React-redux
-Axios
-Redux thunk
-Classnames
-Prop-types
-Json-server
+- ReactJS
+- React hooks
+- React Router
+- Redux
+- React-redux
+- Axios
+- Redux thunk
+- Classnames
+- Prop-types
+- Json-server
