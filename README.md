@@ -16,3 +16,5 @@
 - Classnames
 - Prop-types
 - Json-server
+
+- запуск dev json-server: yarn server
